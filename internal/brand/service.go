@@ -215,6 +215,8 @@ func (s *Service) CloseRecall(ctx context.Context, recall Recall) (Recall, error
 }
 
 func (s *Service) LaunchCampaign(ctx context.Context, campaign CultureCampaign, store StoreProfile, license BrandLicense) (CultureCampaign, error) {
+	campaign = campaignLaunchSnapshot(campaign)
+
 	if err := ctx.Err(); err != nil {
 		return CultureCampaign{}, fmt.Errorf("launch campaign: %w", err)
 	}

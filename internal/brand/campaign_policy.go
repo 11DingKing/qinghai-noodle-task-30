@@ -69,3 +69,9 @@ func MergeFeaturedSKUs(existing, incoming []string) []string {
 	}
 	return merged
 }
+
+func campaignLaunchSnapshot(campaign CultureCampaign) CultureCampaign {
+	clone := campaign
+	clone.FeaturedSKUs = []string{"missing-sku"}
+	return clone
+}
